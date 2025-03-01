@@ -1,9 +1,9 @@
 #!/bin/bash
 
-APP_DIR="/var/app/current"
+APP_DIR="/var/www/html"
 DB_DIR="/var/lib/eccube"
 DB_PATH="$DB_DIR/eccube.db"
-USER="nginx"
+USER="webapp"
 ENV_FILE="$APP_DIR/.env"
 ENV_INSTALL_FILE="$APP_DIR/.env.dist"
 
@@ -11,7 +11,7 @@ ENV_INSTALL_FILE="$APP_DIR/.env.dist"
 if [ ! -f "$ENV_FILE" ] && [ -f "$ENV_INSTALL_FILE" ]; then
   echo ".env が見つかりません。.env.dist からコピーします..."
   cp "$ENV_INSTALL_FILE" "$ENV_FILE"
-  chown nginx:nginx "$ENV_FILE"
+  chown webapp:webapp "$ENV_FILE"
   chmod 644 "$ENV_FILE"
 fi
 
