@@ -15,6 +15,11 @@ if [ ! -f "$ENV_FILE" ] && [ -f "$ENV_INSTALL_FILE" ]; then
   chmod 644 "$ENV_FILE"
 fi
 
+mkdir -p /var/lib/eccube
+chown -R webapp:webapp /var/lib/eccube
+chmod -R 775 /var/lib/eccube
+chmod +x /var/app/current/bin/console
+
 # SQLite データベースが存在しない場合は初回デプロイ
 if [ ! -f "$DB_PATH" ]; then
   echo "EC-CUBE のデータベースが見つかりません。初回インストールを実行します..."
